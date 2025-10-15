@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import DarkVeil from './animations/DarkVeil.jsx';
-import artistsIcon from './assets/artistsicon.png';
-import albumsIcon from './assets/albumsicon.png';
-import tracksIcon from './assets/tracksicon.png';
+import artistsIcon from './assets/artistsIcon.png';
+import albumsIcon from './assets/albumsIcon.png';
+import tracksIcon from './assets/tracksIcon.png';
 import { color } from 'three/tsl';
 
 let streakCalculationRunning = false;
