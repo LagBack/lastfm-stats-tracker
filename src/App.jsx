@@ -27,13 +27,12 @@ function App() {
   });
   const currentStreakCalculationIdRef = useRef(0);
 
-
   const fetchPageData = async (username, page, limit) => {
   try {
     await rateLimit(300);
     
     const response = await fetch(
-      `http://localhost:3001/api/lastfm?method=user.getrecenttracks&user=${encodeURIComponent(username)}&format=json&limit=${limit}&page=${page}`
+      `https://lastfm-tracker-backend-production.up.railway.app/api/lastfm?method=user.getrecenttracks&user=${encodeURIComponent(username)}&format=json&limit=${limit}&page=${page}`
     );
     const data = await response.json();
     
@@ -74,7 +73,7 @@ const calculateStreakProgressive = async (updateStreakCallback) => {
   
         try {
         const response = await fetch(
-      `http://localhost:3001/api/lastfm?method=user.getrecenttracks&user=${encodeURIComponent(username)}&format=json&limit=200&page=${page}`
+      `https://lastfm-tracker-backend-production.up.railway.app/api/lastfm?method=user.getrecenttracks&user=${encodeURIComponent(username)}&format=json&limit=200&page=${page}`
       );
     
     if (!response.ok) {
@@ -162,19 +161,19 @@ const ymd = (date) => {
  const fetchTotalStats = async () => {
   try {
     const artistsResponse = await fetch(
-      `http://localhost:3001/api/lastfm?method=user.gettopartists&user=${encodeURIComponent(username)}&format=json&limit=1`
+      `https://lastfm-tracker-backend-production.up.railway.app/api/lastfm?method=user.gettopartists&user=${encodeURIComponent(username)}&format=json&limit=1`
     );
     const artistsData = await artistsResponse.json();
     const totalArtists = artistsData.topartists?.['@attr']?.total || 0;
 
     const albumsResponse = await fetch(
-      `http://localhost:3001/api/lastfm?method=user.gettopalbums&user=${encodeURIComponent(username)}&format=json&limit=1`
+      `https://lastfm-tracker-backend-production.up.railway.app/api/lastfm?method=user.gettopalbums&user=${encodeURIComponent(username)}&format=json&limit=1`
     );
     const albumsData = await albumsResponse.json();
     const totalAlbums = albumsData.topalbums?.['@attr']?.total || 0;
 
     const tracksResponse = await fetch(
-      `http://localhost:3001/api/lastfm?method=user.gettoptracks&user=${encodeURIComponent(username)}&format=json&limit=1`
+      `https://lastfm-tracker-backend-production.up.railway.app/api/lastfm?method=user.gettoptracks&user=${encodeURIComponent(username)}&format=json&limit=1`
     );
     const tracksData = await tracksResponse.json();
     const totalTracks = tracksData.toptracks?.['@attr']?.total || 0;
@@ -210,13 +209,13 @@ const fetchStreakSafe = async () => {
 
  const fetchTopData = async () => {
   try {
-  const artistsResponse = await fetch(`http://localhost:3001/api/lastfm?method=user.gettopartists&user=${encodeURIComponent(username)}&format=json&limit=5&period=${timePeriod}`
+  const artistsResponse = await fetch(`https://lastfm-tracker-backend-production.up.railway.app/api/lastfm?method=user.gettopartists&user=${encodeURIComponent(username)}&format=json&limit=5&period=${timePeriod}`
   );
   const artistsData = await artistsResponse.json();
   const artists = artistsData.topartists?.artist || [];
   setTopArtists(artistsData.topartists?.artist || []); 
 
-  const tracksResponse = await fetch(`http://localhost:3001/api/lastfm?method=user.gettoptracks&user=${encodeURIComponent(username)}&format=json&limit=5&period=${timePeriod}`);
+  const tracksResponse = await fetch(`https://lastfm-tracker-backend-production.up.railway.app/api/lastfm?method=user.gettoptracks&user=${encodeURIComponent(username)}&format=json&limit=5&period=${timePeriod}`);
   const tracksData = await tracksResponse.json();
   const tracks = tracksData.toptracks?.track || [];
   console.log('Tracks data:', tracksData);
@@ -271,7 +270,7 @@ const fetchStreakSafe = async () => {
         await new Promise(resolve => setTimeout(resolve, 500));
 
         const response = await fetch(
-          `http://localhost:3001/api/search?query=${encodeURIComponent(artist.name)}&type=artist`,
+          `https://lastfm-tracker-backend-production.up.railway.app/api/search?query=${encodeURIComponent(artist.name)}&type=artist`,
         );
         const data = await response.json();
 
@@ -301,7 +300,7 @@ const fetchStreakSafe = async () => {
 
         
         const response = await fetch(
-          `http://localhost:3001/api/search?query=${encodeURIComponent(track.name + ' ' + track.artist.name)}&type=track`,
+          `https://lastfm-tracker-backend-production.up.railway.app/api/search?query=${encodeURIComponent(track.name + ' ' + track.artist.name)}&type=track`,
         );
         const data = await response.json();
 
@@ -342,7 +341,7 @@ const fetchStreakSafe = async () => {
     if (!username) return;
 
     try {
-      const url = `http://localhost:3001/api/lastfm?method=user.getrecenttracks&user=${encodeURIComponent(username)}&format=json&limit=1`;
+      const url = `https://lastfm-tracker-backend-production.up.railway.app/api/lastfm?method=user.getrecenttracks&user=${encodeURIComponent(username)}&format=json&limit=1`;
       const response = await fetch(url);
       const data = await response.json();
       const trackData = data.recenttracks?.track?.[0];
@@ -359,9 +358,9 @@ const fetchStreakSafe = async () => {
    const fetchTotalStatsAndStreak = async () => {
   try {
     const [artistsRes, albumsRes, tracksRes] = await Promise.all([
-      fetch(`http://localhost:3001/api/lastfm?method=user.gettopartists&user=${encodeURIComponent(username)}&format=json&limit=1`),
-      fetch(`http://localhost:3001/api/lastfm?method=user.gettopalbums&user=${encodeURIComponent(username)}&format=json&limit=1`),
-      fetch(`http://localhost:3001/api/lastfm?method=user.gettoptracks&user=${encodeURIComponent(username)}&format=json&limit=1`)
+      fetch(`https://lastfm-tracker-backend-production.up.railway.app/api/lastfm?method=user.gettopartists&user=${encodeURIComponent(username)}&format=json&limit=1`),
+      fetch(`https://lastfm-tracker-backend-production.up.railway.app/api/lastfm?method=user.gettopalbums&user=${encodeURIComponent(username)}&format=json&limit=1`),
+      fetch(`https://lastfm-tracker-backend-production.up.railway.app/api/lastfm?method=user.gettoptracks&user=${encodeURIComponent(username)}&format=json&limit=1`)
     ]);
 
     const artistsData = await artistsRes.json();
@@ -433,7 +432,7 @@ const fetchMusic = async (showLoading = true) => {
   if (showLoading) setLoading(true);
 
   try {
-    const url = `http://localhost:3001/api/lastfm?method=user.getrecenttracks&user=${encodeURIComponent(username)}&format=json&limit=1`;
+    const url = `https://lastfm-tracker-backend-production.up.railway.app/api/lastfm?method=user.getrecenttracks&user=${encodeURIComponent(username)}&format=json&limit=1`;
     const response = await fetch(url);
     const data = await response.json();
 
