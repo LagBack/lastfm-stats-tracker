@@ -6,7 +6,7 @@ A web app that visualizes your Last.fm listening habits — see your top artists
 - Shows **listening streaks** and **recent scrobbles in real time** 🔥
 - Clean, responsive design built with React
 
-### Website
+### Try it out!
 
 - [LastFMTracker](https://lastfmtracker.vercel.app/)
 
