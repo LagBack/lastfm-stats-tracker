@@ -12,7 +12,7 @@ A web app that visualizes your Last.fm listening habits — see your top artists
 
 ## How to use it?
 
-- If you don't already have one, create a <a href='last.fm'>**Last.fm**</a> account
+- If you don't already have one, create a <a href='https://www.last.fm'>**Last.fm**</a> account
 - Simply enter your username and see your music stats along with your current listened to songs in real time
 
 ## 🛠️ Installation & Setup
