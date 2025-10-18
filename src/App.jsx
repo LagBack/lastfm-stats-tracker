@@ -3,6 +3,7 @@ import DarkVeil from './animations/DarkVeil.jsx';
 import artistsIcon from './assets/artistsIcon.png';
 import albumsIcon from './assets/albumsIcon.png';
 import tracksIcon from './assets/tracksIcon.png';
+import myCat from './assets/mycat.jpg';
 import { color } from 'three/tsl';
 
 let streakCalculationRunning = false;
@@ -517,11 +518,42 @@ const fetchMusic = async (showLoading = true) => {
     
       {/* left side, main content */}
       <div style={{width: '520px', flexShrink: 0}}>
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '6px',
+          color: 'rgba(255,255,255,0.6)',
+          fontSize: '16px',
+          marginBottom: '10px'
+        }}>
+          <span>made by <strong style={{ color: 'white' }}>lagb2ck</strong></span>
+          <a
+            href="https://github.com/lagb2ck"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: 'rgba(255,255,255,0.6)' }}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M12 2C6.48 2 2 6.48 2 12a10 10 0 006.84 9.49c.5.09.68-.22.68-.48 0-.24-.01-.87-.02-1.7-2.78.6-3.37-1.34-3.37-1.34-.46-1.15-1.11-1.46-1.11-1.46-.91-.62.07-.61.07-.61 1.01.07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.64-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0112 6.84c.85.01 1.71.12 2.51.34 1.91-1.3 2.75-1.03 2.75-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.83-2.34 4.68-4.57 4.93.36.31.68.92.68 1.86 0 1.34-.01 2.42-.01 2.75 0 .27.18.57.68.48A10 10 0 0022 12c0-5.52-4.48-10-10-10z"
+              />
+            </svg>
+          </a>
+        </div>
+
       <h1 style={{
         color: 'white',
         fontSize: '48px',
-        fontFamily: 'Brush Script MT',
-        marginBottom: '30px',
+        fontFamily: 'Inter, sans-serif',
+        marginBottom: '15px',
         animation: 'fadeIn 0.6s ease-in'
       }}>Last.fm Stats Tracker</h1>
       <div style={{ marginBottom: '40px' }}>
@@ -626,8 +658,16 @@ const fetchMusic = async (showLoading = true) => {
               animation: 'fadeIn 0.8s ease-out 0.5s backwards'
             }}><strong>Last Played:</strong> {getTimeAgo(track.date.uts)}</p>
           )}
+
+  {/* image of my cat for aesthetic purposes */}
+          <img 
+            src={myCat}
+            style={{ width: '200px', height: '200px', marginTop: '900px' }}/>
+            <h4>say happy birthday to zed</h4>
         </div>
       )}
+
+      
        
       
 
@@ -739,6 +779,7 @@ const fetchMusic = async (showLoading = true) => {
                   <h6 style={{ color: '#999', marginTop: '0px', fontWeight: 'normal'}}>
                     (may take a while to load)
                     </h6>
+                    
                   
           </div>
           </div>
