@@ -528,7 +528,7 @@ const fetchMusic = async (showLoading = true) => {
         }}>
           <span>made by <strong style={{ color: 'white' }}>lagb2ck</strong></span>
           <a
-            href="https://github.com/lagb2ck"
+            href="https://github.com/LagBack"
             target="_blank"
             rel="noopener noreferrer"
             style={{ color: 'rgba(255,255,255,0.6)' }}
